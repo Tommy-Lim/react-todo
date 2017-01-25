@@ -21,6 +21,12 @@ class TodoList extends Component {
 
   }
 
+  removeItem(key) {
+     var array = this.state.items;
+     array.splice(array.length-1-key, 1);
+     this.setState({items: array})
+   }
+
   clear(){
     this.setState({items: [], newItem: ''})
   }
@@ -38,8 +44,10 @@ class TodoList extends Component {
 
   render(){
 
+    var scope = this;
+
     const todoItems = this.state.items.slice(0).reverse().map(function(item, index) {
-      return <TodoItem item={item} key={index}></TodoItem>
+      return <TodoItem item={item} key={index} removeItem={scope.removeItem.bind(scope, index)}></TodoItem>
     })
 
     return(
