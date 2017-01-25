@@ -4,15 +4,27 @@ import './todoitem.css';
 class TodoItem extends Component {
 
   render(){
-    return(
-      <li key={this.props.index}>
-        {this.props.item.name} -
-        <a href="#" onClick={this.props.removeItem}> Edit
-        </a> |
-        <a href="#" onClick={this.props.removeItem}> Remove
-        </a>
-      </li>
-    );
+    if(this.props.item.isEditting){
+      return(
+        <li key={this.props.index}>
+          {this.props.item.name} -
+          <a href="#" onClick={this.props.updateItem}> Update
+          </a> |
+          <a href="#" onClick={this.props.removeItem}> Remove
+          </a>
+        </li>
+      );
+    } else{
+      return(
+        <li key={this.props.index}>
+          {this.props.item.name} -
+          <a href="#" onClick={this.props.editItem}> Edit
+          </a> |
+          <a href="#" onClick={this.props.removeItem}> Remove
+          </a>
+        </li>
+      );
+    }
   }
 }
 
