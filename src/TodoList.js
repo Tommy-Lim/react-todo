@@ -43,16 +43,31 @@ class TodoList extends Component {
     })
 
     return(
-      <div>
+      <div className="container">
+
         <form onSubmit={this.addItem.bind(this)}>
-          <input name="item-input" placeholder="enter item here" type="text" value={this.state.newItem} onChange={this.newItemChange.bind(this)}/>
-          <input type="submit" value="submit" />
+          <label for="item-input">
+            Title
+            <input name="item-input" placeholder="enter item here" type="text" value={this.state.newItem} onChange={this.newItemChange.bind(this)}/>
+          </label>
+          <input type="submit" value="submit" className="btn btn-sm btn-primary"/>
         </form>
-        <h1>Todo List</h1>
-        <button onClick={this.clear.bind(this)}>Clear</button>
-        <ul>
-          {todoItems}
-        </ul>
+
+        <button onClick={this.clear.bind(this)} className="btn btn-sm btn-warning">Clear</button>
+
+        <br/>
+
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            Todo List
+          </div>
+          <div className="panel-body">
+            <ul>
+              {todoItems}
+            </ul>
+          </div>
+        </div>
+        
       </div>
     );
   }
