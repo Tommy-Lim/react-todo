@@ -12,9 +12,9 @@ class TodoList extends Component {
     this.state = {
       name: 'TodoList',
       items: [
-        {name: 'item1'},
-        {name:  'item2'},
-        {name: 'item3'}
+        {name: 'Mow the lawn'},
+        {name:  'Get groceries'},
+        {name: 'Laundry'}
       ],
       newItem: ''
     }
@@ -38,36 +38,44 @@ class TodoList extends Component {
 
   render(){
 
-    const todoItems = this.state.items.map(item => {
-      return <TodoItem item={item}></TodoItem>
+    const todoItems = this.state.items.slice(0).reverse().map(function(item, index) {
+      return <TodoItem item={item} key={index}></TodoItem>
     })
 
     return(
       <div className="container">
 
         <form onSubmit={this.addItem.bind(this)}>
-          <label for="item-input">
-            Title
-            <input name="item-input" placeholder="enter item here" type="text" value={this.state.newItem} onChange={this.newItemChange.bind(this)}/>
-          </label>
-          <input type="submit" value="submit" className="btn btn-sm btn-primary"/>
+          <div className="input-group">
+            <span className="input-group-addon" id="basic-addon1">New</span>
+            <input
+              className="form-control"
+              name="input"
+              placeholder="enter item here"
+              type="text" aria-describedby="basic-addon1"
+              value={this.state.newItem}
+              onChange={this.newItemChange.bind(this)}
+            />
+          </div>
+          <input type="submit" value="submit" className="hidden"/>
         </form>
-
-        <button onClick={this.clear.bind(this)} className="btn btn-sm btn-warning">Clear</button>
 
         <br/>
 
         <div className="panel panel-default">
           <div className="panel-heading">
-            Todo List
+            <strong>Tasks</strong>
           </div>
           <div className="panel-body">
             <ul>
               {todoItems}
             </ul>
           </div>
+          <div className="panel-footer right">
+            <button onClick={this.clear.bind(this)} className="btn btn-xs btn-danger">Clear All</button>
+          </div>
         </div>
-        
+
       </div>
     );
   }
