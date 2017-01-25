@@ -12,9 +12,24 @@ class TodoList extends Component {
     this.state = {
       name: 'TodoList',
       items: [
-        {name: 'Mow the lawn'},
-        {name:  'Get groceries'},
-        {name: 'Laundry'}
+        {
+          name: 'Mow the lawn',
+          details: 'cut all the stuff',
+          isEditting: false,
+          isDone: false
+        },
+        {
+          name:  'Get groceries',
+          details: 'get all the things',
+          isEditting: false,
+          isDone: false
+        },
+        {
+          name: 'Laundry',
+          details: 'wash and dry all the clothes',
+          isEditting: false,
+          isDone: false
+        }
       ],
       newItem: ''
     }
@@ -59,7 +74,7 @@ class TodoList extends Component {
             <input
               className="form-control"
               name="input"
-              placeholder="enter item here"
+              placeholder="enter task here"
               type="text" aria-describedby="basic-addon1"
               value={this.state.newItem}
               onChange={this.newItemChange.bind(this)}

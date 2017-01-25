@@ -6,7 +6,9 @@ class TodoItem extends Component {
   render(){
     return(
       <li key={this.props.index}>
-        {this.props.item.name}
+        {this.props.item.name} -
+        <a href="#" onClick={this.props.removeItem}> Edit
+        </a> |
         <a href="#" onClick={this.props.removeItem}> Remove
         </a>
       </li>
